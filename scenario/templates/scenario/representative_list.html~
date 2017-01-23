@@ -1,12 +1,35 @@
+{% load staticfiles %}
+<head>
+  <title>Scenario</title>
+  <link rel="import" href="{% static "scenario/bower_components/paper-slider/paper-slider.html" %}">
+  <link rel="import" href="{% static "scenario/bower_components/google-chart/google-chart.html" %}">
+</head>
+
+
 <h1>Hello Reps!</h1>
 
-{% if rep_list %}
+{% if representative_list %}
 
-<h1> Hello! </h1>
+{% for rep in representative_list %}
+
+{{ rep.first_name }} {{ rep.last_name }}
+
+{% endfor %}
+
+<google-chart
+  type='table'
+  options='{"title": "Distribution of days in 2001Q1"}'
+  cols='[{"label":"Tier", "type":"string"}, {"label":"Payout", "type":"number"}]'
+  rows='[["Jan", 44],["Feb", 28],["Mar", 31]]'>
+</google-chart>
+
+
+
 
 {% else %}
 
-<h2> Nope </h2>
+<h2>Error: No Representatives Found</h2>
+<h3>Please Create a representative</h3>
 
 {% endif %}
 
