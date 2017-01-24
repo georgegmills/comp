@@ -2,27 +2,72 @@
 <head>
   <title>Scenario</title>
   <link rel="import" href="{% static "scenario/bower_components/paper-slider/paper-slider.html" %}">
+  <link rel="import" href="{% static "scenario/bower_components/paper-toolbar/paper-toolbar.html" %}">
+  <link rel="import" href="{% static "scenario/bower_components/paper-icon-button/paper-icon-button.html" %}">
   <link rel="import" href="{% static "scenario/bower_components/google-chart/google-chart.html" %}">
+  <link rel="import" href="{% static "scenario/bower_components/iron-icons/iron-icons.html" %}">
+  <link rel="import" href="{% static "scenario/bower_components/paper-styles/paper-styles.html" %}">
+  <link rel="import" href="{% static "scenario/bower_components/paper-card/paper-card.html" %}">
+  <link rel="import" href="{% static "scenario/bower_components/app-layout/app-box/app-box.html" %}">
+   <style is="custom-style">
+        .small-title {
+            @apply(--paper-font-common-code);
+        }
+
+        body {
+        background-color: #fafafa
+        }
+        #rep_info {
+        float: left;
+        height: 400px;
+        width: 400px;
+        padding-right: 15px;
+        }
+        #chart {
+        float: right;
+        height: 400px;
+        width: 400px;
+        }
+
+    </style>
+
 </head>
+<body>
 
 
-<h1>Hello Reps!</h1>
+<paper-toolbar>
+    <paper-icon-button icon="menu"></paper-icon-button>
+    <span class="small-title">Comp Scenarios</span>
+</paper-toolbar>
+
+
+
+
+<app-box effects="parallax-background">
+  <h2>Sub title</h2>
+</app-box>
+
 
 {% if representative_list %}
+<paper-card id="rep_info">
+<div class="small-title"> {{ representative_list.0.first_name }} {{ representative_list.0.last_name }}</div>
+</paper-card>
 
-{% for rep in representative_list %}
-
-{{ rep.first_name }} {{ rep.last_name }}
-
-{% endfor %}
-
-<google-chart
+<paper-card>
+<google-chart id="chart"
   type='table'
   options='{"title": "Distribution of days in 2001Q1"}'
   cols='[{"label":"Tier", "type":"string"}, {"label":"Payout", "type":"number"}]'
-  rows='[["Jan", 44],["Feb", 28],["Mar", 31]]'>
+  rows='[{% for da in data %}     
+        {% if forloop.last != True %}
+        ["{{ da.0 }}",{{ da.1 }}],
+        {% else %}
+        ["{{ da.0 }}",{{ da.1 }}]
+        {% endif %}   
+        {% endfor %}
+        ]'
 </google-chart>
-
+</paper-card>
 
 
 
@@ -33,3 +78,4 @@
 
 {% endif %}
 
+</body>
