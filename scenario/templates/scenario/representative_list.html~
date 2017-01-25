@@ -8,7 +8,7 @@
   <link rel="import" href="{% static "scenario/bower_components/iron-icons/iron-icons.html" %}">
   <link rel="import" href="{% static "scenario/bower_components/paper-styles/paper-styles.html" %}">
   <link rel="import" href="{% static "scenario/bower_components/paper-card/paper-card.html" %}">
-  <link rel="import" href="{% static "scenario/bower_components/app-layout/app-box/app-box.html" %}">
+  <link rel="import" href="{% static "scenario/bower_components/app-layout/app-header-layout/app-header-layout.html" %}">
    <style is="custom-style">
         .small-title {
             @apply(--paper-font-common-code);
@@ -43,9 +43,9 @@
 
 
 
-<app-box effects="parallax-background">
+<app-header-layout>
   <h2>Sub title</h2>
-</app-box>
+
 
 
 {% if representative_list %}
@@ -68,7 +68,7 @@
         ]'
 </google-chart>
 </paper-card>
-
+</app-header-layout>
 
 
 {% else %}
