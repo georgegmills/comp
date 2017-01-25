@@ -5,9 +5,24 @@ from django.db import models
 # Create your models here.
 
 
+class CompPlan(models.Model):
+        name = models.CharField(max_length=200,default='')
+	def __str__(self):
+                return self.name
+
+
+class Tier(models.Model):
+	tier_number = models.IntegerField(default=1)
+        comp_plan = models.ForeignKey(CompPlan,default=1)
+        attainment_tier = models.DecimalField(max_digits=20,decimal_places=3,default=0.0)
+        payout_tier = models.DecimalField(max_digits=20,decimal_places=3,default=0.0)	
+	
+
 class Representative(models.Model):
         first_name = models.CharField(max_length=200,default='')
         last_name = models.CharField(max_length=200,default='')
+	comp_plan = models.ForeignKey(CompPlan,default=1)
+	
         
 	BOR = 'BOR'
 	HRONE = 'HRONE'
@@ -32,3 +47,8 @@ class Representative(models.Model):
         
         def __str__(self):
                 return self.first_name + ' ' + self.last_name
+
+
+
+
+	
