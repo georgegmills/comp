@@ -1,3 +1,5 @@
-<h1> Hello, World </h1>
+{% extends "scenario/base.html" %}
 
+{% block content %}
 <a href="{% url 'rep_list' %}" > View Your Reps </a>
+{% endblock content %}
