@@ -1,5 +1,32 @@
 {% extends "scenario/base.html" %}
-{% block content %}
-<a href="{% url 'rep_list' %}" > View Your Reps </a>
-{% endblock content %}
 
+{% block content %}
+{% if representative_list %}
+
+{% for rep in representative_list %}
+
+Name: {{ rep.first_name }} {{ rep.last_name }} <br>
+Role: {{ rep.role }} <br>
+Quota: {{ rep.quota }} <br>
+Base Salary: {{ rep.base }} <br>
+Variable Salary: {{ rep.variable }} <br>
+Comp Plan Name: {{ rep.comp_plan.name }}
+
+{% if forloop.last = True %}
+{% else %}
+<br>
+{% endif %}
+
+
+{% endfor %}
+
+
+
+
+{% else %}
+
+Please add a representative!
+
+{% endif %}
+
+{% endblock content %}

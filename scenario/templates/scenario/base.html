@@ -12,28 +12,29 @@
   <link rel="import" href="{% static "scenario/bower_components/app-layout/app-header-layout/app-header-layout.html" %}">
   <link rel="import" href="{% static "scenario/bower_components/app-layout/app-header/app-header.html" %}">
   <link rel="import" href="{% static "scenario/bower_components/app-layout/app-grid/app-grid-style.html" %}">
-  <style is="custom-style">
+  <style is="custom-style" include="app-grid-style">
 	#top-link {
 	color: white;
 	text-decoration: none; 
 	}
 	a {
 	text-decoration: none;
-	}
+	color: #212121
+        }
 	a:visited {
 	color: #221111;
 	}
 
         body {
-        background-color: #fafafa
+        background: #CFD8DC;
 	@apply(--paper-font-common-code);}
-	margin-top: 50px;
-	margin-bottom: 50px;
-	margin-left: 75px;
-	margin-right: 75px;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	margin-left: 100px;
+	margin-right: 100px;
+        padding: 50px;
         }
-
-
+        
         #rep_info {
         float: left;
         height: 400px;
@@ -45,12 +46,15 @@
         height: 400px;
         width: 400px;
         }
+
   </style>
 </head>
 <body>
 <paper-toolbar>
 <paper-icon-button icon="menu"></paper-icon-button>
-<a href="{% url 'index' %}" id="top-link" class="small-title">Comp Scenarios</span>
+<a href="{% url 'index' %}" id="top-link" class="small-title">Comp Scenarios</a>
 </paper-toolbar>
-{% block content %}{% endblock content %}
-</body>
+
+{% block content %} {% endblock %}
+
+

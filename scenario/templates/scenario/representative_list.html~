@@ -1,4 +1,5 @@
 {% extends "scenario/base.html" %}
 {% block content %}
+<a href="{% url 'rep_list' %}" > View Your Reps </a>
 {% endblock content %}
 
